@@ -1,10 +1,28 @@
+/*
+ Даны длины сторон треугольника. Вычислите площадь треугольника.
+ Формат входных данных
+ Вводятся три положительных числа.
+ Формат выходных данных
+ Выведите ответ на задачу.
+ Sample Input:
+ 3
+ 4
+ 5
+ Sample Output:
+ 6
+ */
+
 #include <iostream>
+#include <cmath>
 
-using namespace std;
-
-int main() {
+int main()
+{
+  double A, B, C;
   
-  cout << "Hello, World!\n";
+  std::cin >> A >> B >> C;
   
+  double P = (A + B + C) / 2;
+  
+  std::cout << sqrt(P*(P-A)*(P-B)*(P-C));
   return 0;
 }
