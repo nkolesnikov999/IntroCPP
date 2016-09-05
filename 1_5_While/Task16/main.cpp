@@ -1,10 +1,70 @@
-#include <iostream>
+/*
+ Определите наименьшее расстояние между двумя локальными максимумами последовательности натуральных чисел, завершающейся числом 0. Если в последовательности нет двух локальных максимумов, выведите число 0.
+ 
+ Начальное и конечное значение при этом локальными максимумами не считаются.
+ 
+ Формат входных данных
+ Вводится последовательность целых чисел, оканчивающаяся числом 0 (само число 0 в последовательность не входит, а служит как признак ее окончания).
+ Формат выходных данных
+ Выведите ответ на задачу.
+ 
+ Sample Input 1:
+ 1
+ 2
+ 1
+ 1
+ 2
+ 1
+ 2
+ 1
+ 0
+ Sample Output 1:
+ 2
+ 
+ Sample Input 2:
+ 1
+ 2
+ 3
+ 0
+ Sample Output 2:
+ 0
+ */
 
-using namespace std;
+#include <iostream>
+#include <limits.h>
 
 int main() {
+  int N;
+  int count = INT_MAX;
+  int N1 = 0;
+  int N2 = 0;
+  int i = 0;
+  int lastI = 0;
+  int step = 0;
   
-  cout << "Hello, World!\n";
+  while(true) {
+    N2 = N1;
+    N1 = N;
+    std::cin >> N;
+    if (N == 0) break;
+    
+    if (N2 != 0 && N1 > N2 && N1 > N) {
+      if (lastI != 0) {
+        step = i - lastI;
+        if (step < count) count = step;
+      }
+      lastI = i;
+    }
+    i++;
+  }
+  
+  if (step == 0) {
+    std::cout << 0;
+  } else {
+    std::cout << count;
+  }
+  
+  
   
   return 0;
 }
